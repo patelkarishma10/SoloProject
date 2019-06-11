@@ -18,4 +18,17 @@ public class User {
 	private String password;
 	@Column(length = 200)
 	private String email;
+
+	public User() {
+
+	}
+
+	public User(int id, String username, String password, String email) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+
 }
