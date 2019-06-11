@@ -29,7 +29,7 @@ INSERT INTO FILM (id, title) VALUES (28, 'Finding Nemo')
 
 
 
-INSERT INTO USERS (id, username, password) VALUES (1, 'user1', 'pass1')
-INSERT INTO USERS (id, username, password) VALUES (2, 'user2', 'password')
-INSERT INTO USERS (id, username, password) VALUES (3, 'user3', 'password2')
-INSERT INTO USERS (id, username, password) VALUES (4, 'user4', 'apassword')
+INSERT INTO USERS (id, username, password, email) VALUES (1, 'user1', 'pass1', 'user1@gmail.com')
+INSERT INTO USERS (id, username, password, email) VALUES (2, 'user2', 'password', 'user2@gmail.com')
+INSERT INTO USERS (id, username, password, email) VALUES (3, 'user3', 'password2', 'user3@gmail.com')
+INSERT INTO USERS (id, username, password, email) VALUES (4, 'user4', 'apassword', 'user4@hotmail.com')
