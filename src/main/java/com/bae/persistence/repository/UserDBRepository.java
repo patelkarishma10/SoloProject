@@ -7,6 +7,7 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.bae.persistence.domain.User;
@@ -43,6 +44,18 @@ public class UserDBRepository implements UserRepository {
 		User userFound = em.find(User.class, id);
 		em.remove(userFound);
 		return "{\"message\": \"user has been sucessfully deleted\"}";
+	}
+
+	@Transactional(REQUIRED)
+	@Override
+	public String updateUser(int id, String user) {
+		User userCreated = this.json.getObjectForJSON(user, User.class);
+		Query q1 = em.createQuery(
+				String.format("UPDATE User u SET u.username = '%s', a.password = '%s', a.email = '%s' WHERE a.id = %s",
+						userCreated.getUsername(), userCreated.getPassword(), userCreated.getEmail(), id));
+
+		q1.executeUpdate();
+		return "{\"message\": \"account has been sucessfully updated\"}";
 	}
 
 	//
