@@ -24,5 +24,8 @@ public class UserServiceImpl implements UserService {
 	// U
 
 	// D
-
+	@Override
+	public String deleteUser(int id) {
+		return repo.deleteUser(id);
+	}
 }
