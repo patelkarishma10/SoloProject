@@ -12,8 +12,7 @@ public class UserServiceImpl implements UserService {
 	// C
 	@Override
 	public String createUser(String user) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.createUser(user);
 	}
 
 	// R
