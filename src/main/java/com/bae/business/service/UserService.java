@@ -11,4 +11,5 @@ public interface UserService {
 	// U
 
 	// D
+	String deleteUser(int id);
 }
