@@ -14,8 +14,7 @@ public class UserServiceImpl implements UserService {
 	// R
 	@Override
 	public String getAUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.getAUser(id);
 	}
 
 	// U
