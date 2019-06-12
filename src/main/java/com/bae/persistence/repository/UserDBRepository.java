@@ -28,4 +28,10 @@ public class UserDBRepository implements UserRepository {
 
 	}
 
+	@Override
+	public String createAccount(String account) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
