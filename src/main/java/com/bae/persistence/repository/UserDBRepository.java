@@ -37,6 +37,14 @@ public class UserDBRepository implements UserRepository {
 		return "{\"message\": \"user has been sucessfully created\"}";
 	}
 
+	@Transactional(REQUIRED)
+	@Override
+	public String deleteUser(int id) {
+		User userFound = em.find(User.class, id);
+		em.remove(userFound);
+		return "{\"message\": \"user has been sucessfully deleted\"}";
+	}
+
 	//
 
 }
