@@ -1,5 +1,6 @@
 package com.bae.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import javax.enterprise.inject.Default;
@@ -28,10 +29,12 @@ public class UserDBRepository implements UserRepository {
 
 	}
 
+	@Transactional(REQUIRED)
 	@Override
-	public String createAccount(String account) {
-		// TODO Auto-generated method stub
-		return null;
+	public String createUser(String user) {
+		User userCreated = this.json.getObjectForJSON(user, User.class);
+		em.persist(userCreated);
+		return "{\"message\": \"user has been sucessfully created\"}";
 	}
 
 }
