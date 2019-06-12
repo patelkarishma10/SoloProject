@@ -10,6 +10,10 @@ public class UserServiceImpl implements UserService {
 	private UserRepository repo;
 
 	// C
+	@Override
+	public String createUser(String user) {
+		return repo.createUser(user);
+	}
 
 	// R
 	@Override
