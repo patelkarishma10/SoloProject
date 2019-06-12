@@ -22,10 +22,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// U
+	@Override
+	public String updateUser(int id, String user) {
+		return repo.updateUser(id, user);
+	}
 
 	// D
 	@Override
 	public String deleteUser(int id) {
 		return repo.deleteUser(id);
 	}
+
 }
