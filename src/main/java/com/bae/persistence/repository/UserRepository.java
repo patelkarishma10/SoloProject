@@ -3,6 +3,7 @@ package com.bae.persistence.repository;
 public interface UserRepository {
 
 	// C
+	String createUser(String user);
 
 	// R
 
