@@ -40,8 +40,9 @@ public class UserDBRepository implements UserRepository {
 	@Transactional(REQUIRED)
 	@Override
 	public String deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		User userFound = em.find(User.class, id);
+		em.remove(userFound);
+		return "{\"message\": \"user has been sucessfully deleted\"}";
 	}
 
 	//
