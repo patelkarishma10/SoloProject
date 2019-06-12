@@ -12,5 +12,6 @@ public interface UserRepository {
 	// U
 
 	// D
+	String deleteUser(int id);
 
 }

@@ -37,6 +37,13 @@ public class UserDBRepository implements UserRepository {
 		return "{\"message\": \"user has been sucessfully created\"}";
 	}
 
+	@Transactional(REQUIRED)
+	@Override
+	public String deleteUser(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	//
 
 }
