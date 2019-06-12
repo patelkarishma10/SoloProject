@@ -22,10 +22,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	// U
+	@Override
+	public String updateUser(int id, String user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	// D
 	@Override
 	public String deleteUser(int id) {
 		return repo.deleteUser(id);
 	}
+
 }

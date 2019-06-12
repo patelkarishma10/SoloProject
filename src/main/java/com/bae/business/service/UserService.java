@@ -9,6 +9,7 @@ public interface UserService {
 	String getAUser(int id);
 
 	// U
+	String updateUser(int id, String user);
 
 	// D
 	String deleteUser(int id);
