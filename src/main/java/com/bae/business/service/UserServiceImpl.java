@@ -24,8 +24,7 @@ public class UserServiceImpl implements UserService {
 	// U
 	@Override
 	public String updateUser(int id, String user) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.updateUser(id, user);
 	}
 
 	// D
