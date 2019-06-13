@@ -3,14 +3,15 @@ package com.bae.persistence.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -24,16 +25,20 @@ public class User {
 	private String password;
 	@Column(length = 200)
 	private String email;
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private List<Film> film = new ArrayList<>();
+	// @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch =
+	// FetchType.EAGER)
+	// private List<Film> film = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_film", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "film_id"))
+	private List<Film> films = new ArrayList<>();
 
-	public User(int id, String username, String password, String email, List<Film> film) {
+	public User(int id, String username, String password, String email, List<Film> films) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.film = film;
+		this.films = films;
 	}
 
 	public User() {
@@ -73,11 +78,11 @@ public class User {
 	}
 
 	public List<Film> getFilm() {
-		return film;
+		return films;
 	}
 
-	public void setFilm(List<Film> film) {
-		this.film = film;
+	public void setFilm(List<Film> films) {
+		this.films = films;
 	}
 
 }
