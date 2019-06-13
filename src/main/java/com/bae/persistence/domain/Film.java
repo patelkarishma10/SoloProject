@@ -1,10 +1,16 @@
 package com.bae.persistence.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Film {
@@ -14,6 +20,9 @@ public class Film {
 	private int id;
 	@Column(length = 100)
 	private String title;
+	@OneToMany(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "Film_id")
+	Set<User> userlist = new HashSet<User>();
 
 	public Film(int id, String title) {
 		super();
