@@ -1,7 +1,7 @@
 package com.bae.persistence.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,9 +30,9 @@ public class User {
 	// private List<Film> film = new ArrayList<>();
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_film", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "film_id"))
-	private List<Film> films = new ArrayList<>();
+	private Set<Film> films = new HashSet<>();
 
-	public User(int id, String username, String password, String email, List<Film> films) {
+	public User(int id, String username, String password, String email, Set<Film> films) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -77,11 +77,11 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Film> getFilm() {
+	public Set<Film> getFilm() {
 		return films;
 	}
 
-	public void setFilm(List<Film> films) {
+	public void setFilm(Set<Film> films) {
 		this.films = films;
 	}
 
