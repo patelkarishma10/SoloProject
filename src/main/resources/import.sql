@@ -33,3 +33,7 @@ INSERT INTO USER (id, username, password, email) VALUES (1, 'user1', 'pass1', 'u
 INSERT INTO USER (id, username, password, email) VALUES (2, 'user2', 'password', 'user2@gmail.com')
 INSERT INTO USER (id, username, password, email) VALUES (3, 'user3', 'password2', 'user3@gmail.com')
 INSERT INTO USER (id, username, password, email) VALUES (4, 'user4', 'apassword', 'user4@hotmail.com')
+
+INSERT INTO USER_FILM(user_id, film_id) VALUES (1,2)
+INSERT INTO USER_FILM(user_id, film_id) VALUES (1,3)
+INSERT INTO USER_FILM(user_id, film_id) VALUES (2,3)

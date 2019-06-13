@@ -1,10 +1,17 @@
 package com.bae.persistence.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -18,17 +25,24 @@ public class User {
 	private String password;
 	@Column(length = 200)
 	private String email;
+	// @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch =
+	// FetchType.EAGER)
+	// private List<Film> film = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_film", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "film_id"))
+	private Set<Film> films = new HashSet<>();
 
-	public User() {
-
-	}
-
-	public User(int id, String username, String password, String email) {
+	public User(int id, String username, String password, String email, Set<Film> films) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.films = films;
+	}
+
+	public User() {
+
 	}
 
 	public int getId() {
@@ -61,6 +75,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Set<Film> getFilm() {
+		return films;
+	}
+
+	public void setFilm(Set<Film> films) {
+		this.films = films;
 	}
 
 }
