@@ -48,7 +48,7 @@ public class UserDBRepository implements UserRepository {
 
 	@Transactional(REQUIRED)
 	@Override
-	public String updateUser(int id, String user) {
+	public String updateUserDetails(int id, String user) {
 		User userCreated = this.json.getObjectForJSON(user, User.class);
 		Query q1 = em.createQuery(
 				String.format("UPDATE User u SET u.username = '%s', u.password = '%s', u.email = '%s' WHERE u.id = %s",
