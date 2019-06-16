@@ -35,7 +35,7 @@ public class UserDBRepository implements UserRepository {
 	public String createUser(String user) {
 		User userCreated = this.json.getObjectForJSON(user, User.class);
 		em.persist(userCreated);
-		return "{\"message\": \"user has been sucessfully created\"}";
+		return json.getJSONForObject(userCreated);
 	}
 
 	@Transactional(REQUIRED)
