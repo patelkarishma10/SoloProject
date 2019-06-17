@@ -58,6 +58,14 @@ public class UserDBRepository implements UserRepository {
 		return "{\"message\": \"account has been sucessfully updated\"}";
 	}
 
-	//
+	@Transactional(REQUIRED)
+	@Override
+	public String addFavouriteFilm(int user_id, int film_id) {
+		Query q2 = em.createQuery(
+				String.format("INSERT INTO User_Film(user_id, film_id) VALUES ('%s','%s')", user_id, film_id));
+
+		q2.executeUpdate();
+		return "{\"message\": \"film has been sucessfully added to favourite films\"}";
+	}
 
 }
