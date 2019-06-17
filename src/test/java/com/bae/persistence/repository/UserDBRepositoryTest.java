@@ -56,17 +56,6 @@ public class UserDBRepositoryTest {
 
 	@Test
 	public void testCreateUserWithoutFilms() {
-		//
-		// Set<Film> newList = new HashSet<>();
-		// Film film = new Film(4, "lohk");
-		// newList.add(film);
-		//
-		// ArrayList<User> userList = new ArrayList<>();
-		// User user = new User(4, "kihj", "yd", "jhg", newList);
-		// userList.add(user);
-		//
-		// System.out.println(util.getJSONForObject(userList));
-
 		String reply = repo.createUser(MOCK_OBJECT);
 		Assert.assertEquals(reply, MOCK_OBJECT);
 	}
@@ -91,4 +80,28 @@ public class UserDBRepositoryTest {
 		Assert.assertEquals(util.getJSONForObject(user), repo.getAUser(1));
 
 	}
+
+	@Test
+	public void updateUserTest() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<User> users = new ArrayList<User>();
+		Set<Film> newList = new HashSet<>();
+		User user = new User(1, "kihj", "yd", "jhg", newList);
+		Mockito.when(query.getResultList()).thenReturn(users);
+		String reply = repo.updateUserDetails(1, util.getJSONForObject(user));
+		Assert.assertEquals(reply, "{\"message\": \"account has been sucessfully updated\"}");
+	}
+
+	@Test
+	public void addFavouriteFilmTest() {
+		Mockito.when(manager.createNativeQuery(Mockito.anyString())).thenReturn(query);
+		List<User> users = new ArrayList<User>();
+		Set<Film> newList = new HashSet<>();
+		Film film = new Film(1, "TestFilm");
+		User user = new User(1, "kihj", "yd", "jhg", newList);
+		Mockito.when(query.getResultList()).thenReturn(users);
+		String reply = repo.addFavouriteFilm(1, 1);
+		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully added to favourite films\"}");
+	}
+
 }
