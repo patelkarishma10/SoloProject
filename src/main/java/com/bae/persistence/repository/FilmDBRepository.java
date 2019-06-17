@@ -31,4 +31,11 @@ public class FilmDBRepository implements FilmRepository {
 		return json.getJSONForObject(films);
 	}
 
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.json = util;
+	}
 }
