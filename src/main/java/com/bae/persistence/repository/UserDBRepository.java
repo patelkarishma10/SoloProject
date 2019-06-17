@@ -67,4 +67,12 @@ public class UserDBRepository implements UserRepository {
 		return "{\"message\": \"film has been sucessfully added to favourite films\"}";
 	}
 
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.json = util;
+	}
+
 }
