@@ -91,4 +91,16 @@ public class UserDBRepositoryTest {
 		Assert.assertEquals(util.getJSONForObject(user), repo.getAUser(1));
 
 	}
+
+	@Test
+	public void updateUserTest() {
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		List<User> users = new ArrayList<User>();
+		Set<Film> newList = new HashSet<>();
+		User user = new User(1, "kihj", "yd", "jhg", newList);
+		Mockito.when(query.getResultList()).thenReturn(users);
+		String reply = repo.updateUserDetails(1, util.getJSONForObject(user));
+		Assert.assertEquals(reply, "{\"message\": \"account has been sucessfully updated\"}");
+	}
+
 }
