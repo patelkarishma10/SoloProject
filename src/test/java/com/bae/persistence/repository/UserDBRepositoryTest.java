@@ -26,7 +26,10 @@ public class UserDBRepositoryTest {
 	private Query query;
 	private JSONUtil util;
 	private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}]";
+	private static final String MOCK_DATA_ARRAY2 = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{}]}]";
+
 	private static final String MOCK_OBJECT = "{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}";
+	private static final String MOCK_OBJECT2 = "{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{}]}";
 
 	@Before
 	public void setUp() {
@@ -36,7 +39,13 @@ public class UserDBRepositoryTest {
 	}
 
 	@Test
-	public void testCreateUser() {
+	public void testCreateUserWithFilms() {
+		String reply = repo.createUser(MOCK_OBJECT);
+		Assert.assertEquals(reply, MOCK_OBJECT);
+	}
+
+	@Test
+	public void testCreateUserWithoutFilms() {
 		//
 		// Set<Film> newList = new HashSet<>();
 		// Film film = new Film(4, "lohk");
