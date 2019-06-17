@@ -25,8 +25,8 @@ public class UserDBRepositoryTest {
 	@Mock
 	private Query query;
 	private JSONUtil util;
-	private static final String MOCK_DATA_ARRAY = "[{\"id\":0,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}]";
-	private static final String MOCK_OBJECT = "{\"id\":0,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}";
+	private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}]";
+	private static final String MOCK_OBJECT = "{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}";
 
 	@Before
 	public void setUp() {
@@ -36,7 +36,7 @@ public class UserDBRepositoryTest {
 	}
 
 	@Test
-	public void testCreateMovie() {
+	public void testCreateUser() {
 		//
 		// Set<Film> newList = new HashSet<>();
 		// Film film = new Film(4, "lohk");
@@ -50,5 +50,12 @@ public class UserDBRepositoryTest {
 
 		String reply = repo.createUser(MOCK_OBJECT);
 		Assert.assertEquals(reply, MOCK_OBJECT);
+	}
+
+	@Test
+	public void testDeleteUser() {
+		String reply = repo.deleteUser(1);
+		Assert.assertEquals(reply, "{\"message\": \"user has been sucessfully deleted\"}");
+
 	}
 }
