@@ -58,6 +58,13 @@ public class UserDBRepository implements UserRepository {
 		return "{\"message\": \"account has been sucessfully updated\"}";
 	}
 
+	@Transactional(REQUIRED)
+	@Override
+	public String addFavouriteFilm(int user_id, int film_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	//
 
 }
