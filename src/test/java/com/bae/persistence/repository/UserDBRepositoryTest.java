@@ -1,5 +1,10 @@
 package com.bae.persistence.repository;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -9,8 +14,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.bae.persistence.domain.Film;
+import com.bae.persistence.domain.User;
 import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -24,7 +32,9 @@ public class UserDBRepositoryTest {
 
 	@Mock
 	private Query query;
+
 	private JSONUtil util;
+
 	private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}]";
 	private static final String MOCK_DATA_ARRAY2 = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{}]}]";
 
@@ -65,6 +75,20 @@ public class UserDBRepositoryTest {
 	public void testDeleteUser() {
 		String reply = repo.deleteUser(1);
 		Assert.assertEquals(reply, "{\"message\": \"user has been sucessfully deleted\"}");
+
+	}
+
+	@Test
+	public void getAUserTest() {
+
+		List<User> users = new ArrayList<User>();
+		Set<Film> newList = new HashSet<>();
+
+		User user = new User(1, "kihj", "yd", "jhg", newList);
+
+		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
+
+		Assert.assertEquals(util.getJSONForObject(user), repo.getAUser(1));
 
 	}
 }

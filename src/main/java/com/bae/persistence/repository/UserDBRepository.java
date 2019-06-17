@@ -25,6 +25,7 @@ public class UserDBRepository implements UserRepository {
 
 	@Override
 	public String getAUser(int id) {
+
 		User userFound = em.find(User.class, id);
 		return json.getJSONForObject(userFound);
 
@@ -33,6 +34,7 @@ public class UserDBRepository implements UserRepository {
 	@Transactional(REQUIRED)
 	@Override
 	public String createUser(String user) {
+
 		User userCreated = this.json.getObjectForJSON(user, User.class);
 		em.persist(userCreated);
 		return json.getJSONForObject(userCreated);
