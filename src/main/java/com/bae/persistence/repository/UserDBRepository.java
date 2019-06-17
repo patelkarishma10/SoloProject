@@ -53,7 +53,6 @@ public class UserDBRepository implements UserRepository {
 		Query q1 = em.createQuery(
 				String.format("UPDATE User u SET u.username = '%s', u.password = '%s', u.email = '%s' WHERE u.id = %s",
 						userCreated.getUsername(), userCreated.getPassword(), userCreated.getEmail(), id));
-
 		q1.executeUpdate();
 		return "{\"message\": \"account has been sucessfully updated\"}";
 	}
@@ -61,8 +60,8 @@ public class UserDBRepository implements UserRepository {
 	@Transactional(REQUIRED)
 	@Override
 	public String addFavouriteFilm(int user_id, int film_id) {
-		Query q2 = em.createQuery(
-				String.format("INSERT INTO User_Film(user_id, film_id) VALUES ('%s','%s')", user_id, film_id));
+		Query q2 = em.createNativeQuery(
+				String.format("INSERT INTO User_Film(USER_id, FILM_id) VALUES (%s,%s)", user_id, film_id));
 
 		q2.executeUpdate();
 		return "{\"message\": \"film has been sucessfully added to favourite films\"}";
