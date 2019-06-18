@@ -32,8 +32,6 @@ public class FilmDBRepositoryTest {
 	private TypedQuery<Object> query;
 
 	private JSONUtil util;
-	// private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"title\":\"Test
-	// Film\"}]";
 
 	@Before
 	public void setUp() {

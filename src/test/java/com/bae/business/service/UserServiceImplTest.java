@@ -12,10 +12,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bae.persistence.domain.User;
 import com.bae.persistence.repository.UserDBRepository;
 import com.bae.util.Constants;
-import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTest {
@@ -32,13 +30,9 @@ public class UserServiceImplTest {
 	@Mock
 	private Query query;
 
-	private JSONUtil util;
-
 	@Before
 	public void setUp() {
 		repo.setManager(manager);
-		util = new JSONUtil();
-		repo.setUtil(util);
 	}
 
 	@Test
@@ -51,8 +45,7 @@ public class UserServiceImplTest {
 
 	@Test
 	public void createUserTest() {
-		User user = util.getObjectForJSON(Constants.MOCK_USER_OBJECT, User.class);
-		String userString = util.getJSONForObject(user);
+		String userString = Constants.MOCK_USER_OBJECT;
 		Mockito.when(service.createUser(userString)).thenReturn(Constants.MOCK_USER_OBJECT);
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.createUser(userString));
 
@@ -68,8 +61,8 @@ public class UserServiceImplTest {
 
 	@Test
 	public void updateUserDetailsTest() {
-		User user = util.getObjectForJSON(Constants.MOCK_USER_OBJECT, User.class);
-		String userString = util.getJSONForObject(user);
+
+		String userString = Constants.MOCK_USER_OBJECT;
 		Mockito.when(service.updateUserDetails(1, userString)).thenReturn(Constants.MOCK_USER_OBJECT);
 
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.updateUserDetails(1, userString));
@@ -78,8 +71,7 @@ public class UserServiceImplTest {
 
 	@Test
 	public void addFavouriteFilmTest() {
-		User user = util.getObjectForJSON(Constants.MOCK_USER_OBJECT, User.class);
-		String userString = util.getJSONForObject(user);
+		String userString = Constants.MOCK_USER_OBJECT;
 		Mockito.when(service.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.addFavouriteFilm(1, 2));
 
