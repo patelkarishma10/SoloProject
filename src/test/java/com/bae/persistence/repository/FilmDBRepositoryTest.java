@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -29,7 +28,7 @@ public class FilmDBRepositoryTest {
 	private EntityManager manager;
 
 	@Mock
-	private Query query;
+	private TypedQuery<Object> query;
 
 	private JSONUtil util;
 	private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"title\":\"Test Film\"}]";
@@ -41,14 +40,12 @@ public class FilmDBRepositoryTest {
 		repo.setUtil(util);
 	}
 
-	@Ignore
 	@Test
-	public void getAllFilmsTeat() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		List<Film> films = new ArrayList<Film>();
+	public void getAllFilmsTest() {
+		Mockito.when(manager.createQuery(Mockito.anyString(), Mockito.any())).thenReturn(query);
+		List<Object> films = new ArrayList<Object>();
 		films.add(new Film(1, "Test Film"));
 		Mockito.when(query.getResultList()).thenReturn(films);
-		System.out.println(repo.getAllFilms());
 		Assert.assertEquals(MOCK_DATA_ARRAY, repo.getAllFilms());
 	}
 }
