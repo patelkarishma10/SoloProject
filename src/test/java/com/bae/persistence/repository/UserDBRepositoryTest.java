@@ -19,6 +19,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.persistence.domain.Film;
 import com.bae.persistence.domain.User;
+import com.bae.util.Constants;
 import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -35,12 +36,6 @@ public class UserDBRepositoryTest {
 
 	private JSONUtil util;
 
-	private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}]";
-	private static final String MOCK_DATA_ARRAY2 = "[{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{}]}]";
-
-	private static final String MOCK_OBJECT = "{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{\"id\":4,\"title\":\"lohk\"}]}";
-	private static final String MOCK_OBJECT2 = "{\"id\":1,\"username\":\"user1\",\"password\":\"pass1\",\"email\":\"user1@gmail.com\",\"films\":[{}]}";
-
 	@Before
 	public void setUp() {
 		repo.setManager(manager);
@@ -50,14 +45,8 @@ public class UserDBRepositoryTest {
 
 	@Test
 	public void testCreateUserWithFilms() {
-		String reply = repo.createUser(MOCK_OBJECT);
-		Assert.assertEquals(reply, MOCK_OBJECT);
-	}
-
-	@Test
-	public void testCreateUserWithoutFilms() {
-		String reply = repo.createUser(MOCK_OBJECT);
-		Assert.assertEquals(reply, MOCK_OBJECT);
+		String reply = repo.createUser(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(reply, Constants.MOCK_USER_OBJECT);
 	}
 
 	@Test

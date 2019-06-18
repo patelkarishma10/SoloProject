@@ -16,6 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.persistence.domain.Film;
+import com.bae.util.Constants;
 import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -31,7 +32,8 @@ public class FilmDBRepositoryTest {
 	private TypedQuery<Object> query;
 
 	private JSONUtil util;
-	private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"title\":\"Test Film\"}]";
+	// private static final String MOCK_DATA_ARRAY = "[{\"id\":1,\"title\":\"Test
+	// Film\"}]";
 
 	@Before
 	public void setUp() {
@@ -46,6 +48,6 @@ public class FilmDBRepositoryTest {
 		List<Object> films = new ArrayList<Object>();
 		films.add(new Film(1, "Test Film"));
 		Mockito.when(query.getResultList()).thenReturn(films);
-		Assert.assertEquals(MOCK_DATA_ARRAY, repo.getAllFilms());
+		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, repo.getAllFilms());
 	}
 }
