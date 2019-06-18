@@ -7,4 +7,7 @@ public class Constants {
 
 	public static final String MOCK_FILM_ARRAY = "[{\"id\":1,\"title\":\"Test Film\"}]";
 
+	public static final String MOCK_Film_OBJECT1 = "{\"id\":1,\"title\":\"Test Film\"}";
+	public static final String MOCK_Film_OBJECT2 = "{\"id\":2,\"title\":\"Test Film\"}";
+
 }

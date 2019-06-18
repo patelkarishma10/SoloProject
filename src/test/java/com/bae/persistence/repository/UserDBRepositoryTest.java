@@ -52,7 +52,9 @@ public class UserDBRepositoryTest {
 	@Test
 	public void testDeleteUser() {
 		String reply = repo.deleteUser(1);
-		Assert.assertEquals(reply, "{\"message\": \"user has been sucessfully deleted\"}");
+		// Assert.assertEquals(reply, "{\"message\": \"user has been sucessfully
+		// deleted\"}");
+		Assert.assertEquals("{\"message\": \"user has been sucessfully deleted\"}", reply);
 
 	}
 
