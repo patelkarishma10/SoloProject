@@ -28,8 +28,8 @@ public class FilmControllerTest {
 
 	@Test
 	public void getAllFilmsTest() {
-		Mockito.when(service.getAllFilms()).thenReturn(Constants.MOCK_VALUE);
-		Assert.assertEquals(Constants.MOCK_VALUE, controller.getAllFilms());
+		Mockito.when(service.getAllFilms()).thenReturn(Constants.MOCK_FILM_ARRAY);
+		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, controller.getAllFilms());
 	}
 
 }
