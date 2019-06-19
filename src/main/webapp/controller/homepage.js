@@ -61,18 +61,18 @@ function getAllFilms() {
     makeRequest("GET", "http://localhost:8080/SoloProject/api/film/getAllFilms")
         .then((data) => {
 
-            const containerDiv = document.getElementById('AllFilmsDiv');
+            const containerDiv2 = document.getElementById('AllFilmsDiv');
             let tableHeading = document.createElement('h1');
             tableHeading.id = "tableHeading2";
             tableHeading.innerHTML = "Disney films";
-            containerDiv.appendChild(tableHeading);
-            if (document.contains(document.getElementById("table1"))) {
-                containerDiv.removeChild(document.getElementById("table1"));
-                containerDiv.removeChild(document.getElementById("tableHeading2"));
+            containerDiv2.appendChild(tableHeading);
+            if (document.contains(document.getElementById("table2"))) {
+                containerDiv2.removeChild(document.getElementById("table2"));
+                containerDiv2.removeChild(document.getElementById("tableHeading2"));
             }
             let container = document.createElement('table');
-            container.id = "table1";
-            containerDiv.appendChild(container);
+            container.id = "table2";
+            containerDiv2.appendChild(container);
             let tableHeadingTitle = document.createElement('th');
             tableHeadingTitle.innerHTML = "Tilte";
             container.appendChild(tableHeadingTitle);
@@ -95,9 +95,18 @@ function getAllFilms() {
                 addFilmbtn.type = "button";
                 addFilmbtn.className = "btn btn-primary";
                 addFilmbtn.value = "Add Film";
-                addFilmbtn.onclick = function addFilm() {
+                let Film_ID = data[i].id;
 
+                addFilmbtn.onclick = function addFilm() {
+                    makeRequest("POST", path + `user/addFavFilm/${ID}/${Film_ID}`)
+                        .then((data) => {
+                            console.log(data);
+                        })
+                        .catch((error) => console.log(error.message));
+                    return false;
                 };
+
+
                 myAddFilm.appendChild(addFilmbtn);
 
             }
