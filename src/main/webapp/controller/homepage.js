@@ -53,7 +53,6 @@ function getUserFilms() {
 
 }
 
-
 function getAllFilms() {
 
     let ID = sessionStorage.getItem('ID');
@@ -97,16 +96,11 @@ function getAllFilms() {
                 addFilmbtn.value = "Add Film";
                 let Film_ID = data[i].id;
 
-                addFilmbtn.onclick = function addFilm() {
-                    makeRequest("POST", path + `user/addFavFilm/${ID}/${Film_ID}`)
-                        .then((data) => {
-                            console.log(data);
-                        })
-                        .catch((error) => console.log(error.message));
-                    return false;
-                };
-
-
+                addFilmbtn.onclick = (function () {
+                    return function () {
+                        addFilm(ID, Film_ID);
+                    }
+                })(data[i]["id"]);
                 myAddFilm.appendChild(addFilmbtn);
 
             }
@@ -115,4 +109,16 @@ function getAllFilms() {
         .catch((error) => console.log(error.message));
     return false;
 
+}
+
+function addFilm(ID, Film_ID) {
+    makeRequest("POST", path + `user/addFavFilm/${ID}/${Film_ID}`)
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error.message)
+            document.getElementById("AddFilmResponce").innerHTML = "you have already added this film";
+        });
+    return false;
 }

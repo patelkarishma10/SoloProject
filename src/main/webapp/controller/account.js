@@ -6,36 +6,17 @@ function getAccountDetails() {
             const email = data.email;
             const password = data.password;
             const ID = data.id;
-        
-        
-//            let myUsername = document.createElement('span');
-//            myUsername.innerHTML = username;
-//
-//            let myEmail = document.createElement('span');
-//            myEmail.innerHTML = email;
-//
-//            let myID = document.createElement('span');
-//            myID.innerHTML = ID;
-//
-//            const container = document.getElementById('displayDetails');
-//            container.appendChild(myUsername);
-//            container.appendChild(myEmail);
-//            container.appendChild(myID);
 
             document.getElementById("updateId").value = ID;
             document.getElementById("updateEmail").value = email;
             document.getElementById("updateUsername").value = username;
             document.getElementById("updatePassword").value = password;
-        
-        
+
+
             document.getElementById("tableId").innerHTML = ID;
             document.getElementById("tableEmail").innerHTML = email;
             document.getElementById("tableUsername").innerHTML = username;
 
-//            <
-//            td id = "tableUsername" > < /td> <
-//            td id = "tableId" > < /td> <
-//            td id = "tableEmail" > < /td>
             console.log(data);
         })
         .catch((error) => console.log(error.message));
