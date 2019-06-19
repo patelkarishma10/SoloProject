@@ -14,7 +14,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.persistence.repository.FilmDBRepository;
 import com.bae.util.Constants;
-import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FilmServiceImplTest {
@@ -31,13 +30,9 @@ public class FilmServiceImplTest {
 	@Mock
 	private Query query;
 
-	private JSONUtil util;
-
 	@Before
 	public void setUp() {
 		repo.setManager(manager);
-		util = new JSONUtil();
-		repo.setUtil(util);
 	}
 
 	@Test

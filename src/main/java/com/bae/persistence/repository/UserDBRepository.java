@@ -61,9 +61,9 @@ public class UserDBRepository implements UserRepository {
 
 	@Transactional(REQUIRED)
 	@Override
-	public String addFavouriteFilm(int user_id, int film_id) {
+	public String addFavouriteFilm(int userId, int filmId) {
 		Query q2 = em.createNativeQuery(
-				String.format("INSERT INTO User_Film(USER_id, FILM_id) VALUES (%s,%s)", user_id, film_id));
+				String.format("INSERT INTO User_Film(USER_id, FILM_id) VALUES (%s,%s)", userId, filmId));
 
 		q2.executeUpdate();
 		return "{\"message\": \"film has been sucessfully added to favourite films\"}";

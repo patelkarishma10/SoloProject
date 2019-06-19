@@ -59,7 +59,6 @@ public class UserDBRepositoryTest {
 	@Test
 	public void getAUserTest() {
 
-		List<User> users = new ArrayList<User>();
 		Set<Film> newList = new HashSet<>();
 
 		User user = new User(1, "kihj", "yd", "jhg", newList);
@@ -73,7 +72,7 @@ public class UserDBRepositoryTest {
 	@Test
 	public void updateUserTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		List<User> users = new ArrayList<User>();
+		List<User> users = new ArrayList<>();
 		Set<Film> newList = new HashSet<>();
 		User user = new User(1, "kihj", "yd", "jhg", newList);
 		Mockito.when(query.getResultList()).thenReturn(users);
@@ -84,10 +83,8 @@ public class UserDBRepositoryTest {
 	@Test
 	public void addFavouriteFilmTest() {
 		Mockito.when(manager.createNativeQuery(Mockito.anyString())).thenReturn(query);
-		List<User> users = new ArrayList<User>();
+		List<User> users = new ArrayList<>();
 		Set<Film> newList = new HashSet<>();
-		Film film = new Film(1, "TestFilm");
-		User user = new User(1, "kihj", "yd", "jhg", newList);
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.addFavouriteFilm(1, 1);
 		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully added to favourite films\"}");

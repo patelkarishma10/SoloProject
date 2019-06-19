@@ -5,7 +5,7 @@ public interface UserRepository {
 	// C
 	String createUser(String user);
 
-	String addFavouriteFilm(int user_id, int film_id);
+	String addFavouriteFilm(int userId, int filmId);
 
 	// R
 
