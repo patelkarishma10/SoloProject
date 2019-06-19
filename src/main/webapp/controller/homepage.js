@@ -53,7 +53,57 @@ function getUserFilms() {
 
 }
 
-//
-//funtion getAllFilms() {
-//
-//}
+
+function getAllFilms() {
+
+    let ID = sessionStorage.getItem('ID');
+    const container = document.getElementById('displayDetails');
+    makeRequest("GET", "http://localhost:8080/SoloProject/api/film/getAllFilms")
+        .then((data) => {
+
+            const containerDiv = document.getElementById('AllFilmsDiv');
+            let tableHeading = document.createElement('h1');
+            tableHeading.id = "tableHeading2";
+            tableHeading.innerHTML = "Disney films";
+            containerDiv.appendChild(tableHeading);
+            if (document.contains(document.getElementById("table1"))) {
+                containerDiv.removeChild(document.getElementById("table1"));
+                containerDiv.removeChild(document.getElementById("tableHeading2"));
+            }
+            let container = document.createElement('table');
+            container.id = "table1";
+            containerDiv.appendChild(container);
+            let tableHeadingTitle = document.createElement('th');
+            tableHeadingTitle.innerHTML = "Tilte";
+            container.appendChild(tableHeadingTitle);
+            let tableHeadingRemoveFilm = document.createElement('th');
+            tableHeadingRemoveFilm.innerHTML = "Add a film";
+            container.appendChild(tableHeadingRemoveFilm);
+
+            for (let i = 0; i < data.length; i++) {
+                let myRow = document.createElement('tr');
+                myRow.id = "row" + i;
+                container.appendChild(myRow);
+
+                let myTitle = document.createElement('td');
+                myTitle.innerHTML = data[i].title;
+                myRow.appendChild(myTitle);
+
+                let myAddFilm = document.createElement('td');
+                myRow.appendChild(myAddFilm);
+                let addFilmbtn = document.createElement('input');
+                addFilmbtn.type = "button";
+                addFilmbtn.className = "btn btn-primary";
+                addFilmbtn.value = "Add Film";
+                addFilmbtn.onclick = function addFilm() {
+
+                };
+                myAddFilm.appendChild(addFilmbtn);
+
+            }
+            console.log(data);
+        })
+        .catch((error) => console.log(error.message));
+    return false;
+
+}
