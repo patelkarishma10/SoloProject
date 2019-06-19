@@ -5,6 +5,7 @@ function getAUser() {
             const ID = data.id;
             sessionStorage.setItem('ID', ID);
             window.location.href = 'homepage.html';
+            console.log(data);
         })
         .catch((error) => {
             console.log(error.message)
