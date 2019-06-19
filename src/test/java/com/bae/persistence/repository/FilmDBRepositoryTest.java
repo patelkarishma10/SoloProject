@@ -43,7 +43,7 @@ public class FilmDBRepositoryTest {
 	@Test
 	public void getAllFilmsTest() {
 		Mockito.when(manager.createQuery(Mockito.anyString(), Mockito.any())).thenReturn(query);
-		List<Object> films = new ArrayList<Object>();
+		List<Object> films = new ArrayList<>();
 		films.add(new Film(1, "Test Film"));
 		Mockito.when(query.getResultList()).thenReturn(films);
 		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, repo.getAllFilms());

@@ -48,8 +48,8 @@ public class UserController {
 	@Path("/addFavFilm/{user_id}/{film_id}")
 	@POST
 	@Produces({ "application/json" })
-	public String addFavouriteFilm(@PathParam("user_id") int user_id, @PathParam("film_id") int film_id) {
-		return service.addFavouriteFilm(user_id, film_id);
+	public String addFavouriteFilm(@PathParam("user_id") int userId, @PathParam("film_id") int filmId) {
+		return service.addFavouriteFilm(userId, filmId);
 	}
 
 	public void setService(UserService service) {
