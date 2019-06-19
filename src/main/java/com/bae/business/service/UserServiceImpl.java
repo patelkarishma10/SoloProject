@@ -18,7 +18,12 @@ public class UserServiceImpl implements UserService {
 	// R
 	@Override
 	public String getAUser(int id) {
-		return repo.getAUser(id);
+
+		if (repo.getAUser(id) == null) {
+			return "{\"message\": \"This is is not recognised\"}";
+		} else {
+			return repo.getAUser(id);
+		}
 	}
 
 	// U
