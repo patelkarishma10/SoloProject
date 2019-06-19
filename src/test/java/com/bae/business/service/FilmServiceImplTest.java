@@ -42,9 +42,9 @@ public class FilmServiceImplTest {
 
 	@Test
 	public void getAllFilmsTest() {
-		Mockito.when(service.getAllFilms()).thenReturn(Constants.MOCK_FILM_ARRAY);
+		Mockito.when(repo.getAllFilms()).thenReturn(Constants.MOCK_FILM_ARRAY);
 
-		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, repo.getAllFilms());
+		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, service.getAllFilms());
 
 	}
 

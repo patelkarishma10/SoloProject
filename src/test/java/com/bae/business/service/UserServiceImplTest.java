@@ -1,8 +1,5 @@
 package com.bae.business.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,38 +21,31 @@ public class UserServiceImplTest {
 	@Mock
 	private UserDBRepository repo;
 
-	@Mock
-	private EntityManager manager;
-
-	@Mock
-	private Query query;
-
 	@Before
 	public void setUp() {
-		repo.setManager(manager);
+
 	}
 
 	@Test
 	public void getAUserTest() {
-		Mockito.when(service.getAUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Mockito.when(repo.getAUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
 
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.getAUser(1));
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.getAUser(1));
 
 	}
 
 	@Test
 	public void createUserTest() {
 		String userString = Constants.MOCK_USER_OBJECT;
-		Mockito.when(service.createUser(userString)).thenReturn(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.createUser(userString));
-
+		Mockito.when(repo.createUser(userString)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.createUser(userString));
 	}
 
 	@Test
 	public void deleteUserTest() {
-		Mockito.when(service.deleteUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Mockito.when(repo.deleteUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
 
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.deleteUser(1));
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.deleteUser(1));
 
 	}
 
@@ -63,17 +53,17 @@ public class UserServiceImplTest {
 	public void updateUserDetailsTest() {
 
 		String userString = Constants.MOCK_USER_OBJECT;
-		Mockito.when(service.updateUserDetails(1, userString)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Mockito.when(repo.updateUserDetails(1, userString)).thenReturn(Constants.MOCK_USER_OBJECT);
 
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.updateUserDetails(1, userString));
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.updateUserDetails(1, userString));
 
 	}
 
 	@Test
 	public void addFavouriteFilmTest() {
 		String userString = Constants.MOCK_USER_OBJECT;
-		Mockito.when(service.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, repo.addFavouriteFilm(1, 2));
+		Mockito.when(repo.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.addFavouriteFilm(1, 2));
 
 	}
 

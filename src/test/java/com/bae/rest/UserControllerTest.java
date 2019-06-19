@@ -29,45 +29,38 @@ public class UserControllerTest {
 
 	@Test
 	public void getAUserTest() {
-//		Mockito.when(service.getAUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
-//		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.getAUser(1));
-		Mockito.when(controller.getAUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.getAUser(1));
+		Mockito.when(service.getAUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.getAUser(1));
 	}
 
 	@Test
 	public void createUserTest() {
-//		Mockito.when(service.createUser(Constants.MOCK_USER_OBJECT)).thenReturn(Constants.MOCK_USER_OBJECT);
-//		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.createUser(Constants.MOCK_USER_OBJECT));
-//		// Mockito.verify(service).createUser(Constants.MOCK_USER_OBJECT);
-
-		Mockito.when(controller.createUser(Constants.MOCK_USER_OBJECT)).thenReturn(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.createUser(Constants.MOCK_USER_OBJECT));
+		Mockito.when(service.createUser(Constants.MOCK_USER_OBJECT)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.createUser(Constants.MOCK_USER_OBJECT));
 		// Mockito.verify(service).createUser(Constants.MOCK_USER_OBJECT);
+
 	}
 
 	@Test
 	public void deleteUserTest() {
-		Mockito.when(controller.deleteUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
-
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.deleteUser(1));
+		Mockito.when(service.deleteUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.deleteUser(1));
 
 	}
 
 	@Test
 	public void updateUserDetailsTest() {
 		String userString = Constants.MOCK_USER_OBJECT;
-		Mockito.when(controller.updateUserDetails(1, userString)).thenReturn(Constants.MOCK_USER_OBJECT);
-
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.updateUserDetails(1, userString));
+		Mockito.when(service.updateUserDetails(1, userString)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.updateUserDetails(1, userString));
 
 	}
 
 	@Test
 	public void addFavouriteFilmTest() {
 		String userString = Constants.MOCK_USER_OBJECT;
-		Mockito.when(controller.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.addFavouriteFilm(1, 2));
+		Mockito.when(service.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.addFavouriteFilm(1, 2));
 
 	}
 }
