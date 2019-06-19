@@ -118,7 +118,7 @@ function addFilm(ID, Film_ID) {
         })
         .catch((error) => {
             console.log(error.message)
-            document.getElementById("AddFilmResponce").innerHTML = "you have already added this film";
+            document.getElementById("AddFilmResponce").value = "you have already added this film";
         });
     return false;
 }

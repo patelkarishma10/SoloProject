@@ -13,7 +13,6 @@ function getAUser() {
     return false;
 }
 
-
 function createAccount() {
     let newAcc = {
         username: document.getElementById("accUsername").value,
@@ -24,12 +23,16 @@ function createAccount() {
         .then((data) => {
             const ID = data.id;
             sessionStorage.setItem('ID', ID);
-            makeRequest("GET", path + `user/getAUser/${ID}`)
-                .then((data) => {
-                    window.location.href = 'homepage.html';
-                })
-                .catch((error) => console.log(error.message));
+            login(ID);
         })
         .catch((error) => console.log(error.message));
     return false;
+}
+
+function login(ID) {
+    makeRequest("GET", path + `user/getAUser/${ID}`)
+        .then((data) => {
+            window.location.href = 'homepage.html';
+        })
+        .catch((error) => console.log(error.message));
 }
