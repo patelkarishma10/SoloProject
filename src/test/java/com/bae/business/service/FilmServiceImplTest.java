@@ -1,10 +1,7 @@
-package com.bae.persistence.repository;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.bae.business.service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,21 +12,24 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bae.persistence.domain.Film;
+import com.bae.persistence.repository.FilmDBRepository;
 import com.bae.util.Constants;
 import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FilmDBRepositoryTest {
+public class FilmServiceImplTest {
 
 	@InjectMocks
+	private FilmServiceImpl service;
+
+	@Mock
 	private FilmDBRepository repo;
 
 	@Mock
 	private EntityManager manager;
 
 	@Mock
-	private TypedQuery<Object> query;
+	private Query query;
 
 	private JSONUtil util;
 
@@ -42,10 +42,10 @@ public class FilmDBRepositoryTest {
 
 	@Test
 	public void getAllFilmsTest() {
-		Mockito.when(manager.createQuery(Mockito.anyString(), Mockito.any())).thenReturn(query);
-		List<Object> films = new ArrayList<Object>();
-		films.add(new Film(1, "Test Film"));
-		Mockito.when(query.getResultList()).thenReturn(films);
-		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, repo.getAllFilms());
+		Mockito.when(repo.getAllFilms()).thenReturn(Constants.MOCK_FILM_ARRAY);
+
+		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, service.getAllFilms());
+
 	}
+
 }

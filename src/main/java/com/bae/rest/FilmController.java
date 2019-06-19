@@ -19,4 +19,8 @@ public class FilmController {
 	public String getAllFilms() {
 		return service.getAllFilms();
 	}
+
+	public void setService(FilmService service) {
+		this.service = service;
+	}
 }

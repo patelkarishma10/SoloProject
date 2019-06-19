@@ -52,4 +52,8 @@ public class UserController {
 		return service.addFavouriteFilm(user_id, film_id);
 	}
 
+	public void setService(UserService service) {
+		this.service = service;
+	}
+
 }
