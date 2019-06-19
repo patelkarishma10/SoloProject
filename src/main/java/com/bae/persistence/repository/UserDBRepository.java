@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.bae.persistence.domain.Film;
 import com.bae.persistence.domain.User;
 import com.bae.util.JSONUtil;
 
@@ -67,6 +68,19 @@ public class UserDBRepository implements UserRepository {
 
 		q2.executeUpdate();
 		return "{\"message\": \"film has been sucessfully added to favourite films\"}";
+	}
+
+	@Transactional(REQUIRED)
+	@Override
+	public String deleteFavouriteFilm(int userId, int filmId) {
+		User user = em.find(User.class, userId);
+		for (Film film : user.getFilm()) {
+			if (film.getId() == filmId) {
+				user.getFilm().remove(film);
+				break;
+			}
+		}
+		return "{\"message\": \"film has been sucessfully removed from favourite films\"}";
 	}
 
 	public void setManager(EntityManager manager) {

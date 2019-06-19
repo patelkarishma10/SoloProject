@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
 		return repo.addFavouriteFilm(userId, filmId);
 	}
 
+	@Override
+	public String deleteFavouriteFilm(int userId, int filmId) {
+		return repo.deleteFavouriteFilm(userId, filmId);
+	}
+
 }

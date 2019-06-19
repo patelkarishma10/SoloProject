@@ -17,4 +17,6 @@ public interface UserRepository {
 	// D
 	String deleteUser(int id);
 
+	String deleteFavouriteFilm(int userId, int filmId);
+
 }
