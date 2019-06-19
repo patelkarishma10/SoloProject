@@ -15,4 +15,6 @@ public interface UserService {
 
 	// D
 	String deleteUser(int id);
+
+	String deleteFavouriteFilm(int userId, int filmId);
 }

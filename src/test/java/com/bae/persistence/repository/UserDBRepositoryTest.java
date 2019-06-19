@@ -61,7 +61,7 @@ public class UserDBRepositoryTest {
 
 		Set<Film> newList = new HashSet<>();
 
-		User user = new User(1, "kihj", "yd", "jhg", newList);
+		User user = new User(1, "user", "password", "eamil", newList);
 
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
 
@@ -87,6 +87,17 @@ public class UserDBRepositoryTest {
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.addFavouriteFilm(1, 1);
 		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully added to favourite films\"}");
+	}
+
+	@Test
+	public void delleteFavouriteFilmTest() {
+		Set<Film> newList = new HashSet<>();
+
+		User user = new User(1, "user", "password", "eamil", newList);
+
+		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
+		String reply = repo.deleteFavouriteFilm(1, 1);
+		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully removed from favourite films\"}");
 	}
 
 }

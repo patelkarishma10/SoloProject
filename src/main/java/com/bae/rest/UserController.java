@@ -52,6 +52,13 @@ public class UserController {
 		return service.addFavouriteFilm(userId, filmId);
 	}
 
+	@Path("/deleteFavFilm/{user_id}/{film_id}")
+	@DELETE
+	@Produces({ "application/json" })
+	public String deleteFavouriteFilm(@PathParam("user_id") int userId, @PathParam("film_id") int filmId) {
+		return service.deleteFavouriteFilm(userId, filmId);
+	}
+
 	public void setService(UserService service) {
 		this.service = service;
 	}
