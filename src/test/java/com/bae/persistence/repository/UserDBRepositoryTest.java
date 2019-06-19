@@ -84,7 +84,6 @@ public class UserDBRepositoryTest {
 	public void addFavouriteFilmTest() {
 		Mockito.when(manager.createNativeQuery(Mockito.anyString())).thenReturn(query);
 		List<User> users = new ArrayList<>();
-		Set<Film> newList = new HashSet<>();
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.addFavouriteFilm(1, 1);
 		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully added to favourite films\"}");

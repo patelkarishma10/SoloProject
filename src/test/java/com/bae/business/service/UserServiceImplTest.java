@@ -61,7 +61,6 @@ public class UserServiceImplTest {
 
 	@Test
 	public void addFavouriteFilmTest() {
-		String userString = Constants.MOCK_USER_OBJECT;
 		Mockito.when(repo.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.addFavouriteFilm(1, 2));
 

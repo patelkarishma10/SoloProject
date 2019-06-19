@@ -37,7 +37,6 @@ public class UserControllerTest {
 	public void createUserTest() {
 		Mockito.when(service.createUser(Constants.MOCK_USER_OBJECT)).thenReturn(Constants.MOCK_USER_OBJECT);
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.createUser(Constants.MOCK_USER_OBJECT));
-		// Mockito.verify(service).createUser(Constants.MOCK_USER_OBJECT);
 
 	}
 
@@ -58,7 +57,6 @@ public class UserControllerTest {
 
 	@Test
 	public void addFavouriteFilmTest() {
-		String userString = Constants.MOCK_USER_OBJECT;
 		Mockito.when(service.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.addFavouriteFilm(1, 2));
 

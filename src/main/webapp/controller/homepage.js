@@ -1,7 +1,6 @@
 function getUserFilms() {
 
     let ID = sessionStorage.getItem('ID');
-    const container = document.getElementById('displayDetails');
     makeRequest("GET", path + `user/getAUser/${ID}`)
         .then((data) => {
 
@@ -56,7 +55,6 @@ function getUserFilms() {
 function getAllFilms() {
 
     let ID = sessionStorage.getItem('ID');
-    const container = document.getElementById('displayDetails');
     makeRequest("GET", path + "film/getAllFilms")
         .then((data) => {
 
@@ -94,13 +92,13 @@ function getAllFilms() {
                 addFilmbtn.type = "button";
                 addFilmbtn.className = "btn btn-primary";
                 addFilmbtn.value = "Add Film";
-                let Film_ID = data[i].id;
+                let FilmID = data[i].id;
 
                 addFilmbtn.onclick = (function () {
                     return function () {
-                        addFilm(ID, Film_ID);
+                        addFilm(ID, FilmID);
                     }
-                })(data[i]["id"]);
+                })(data[i].id);
                 myAddFilm.appendChild(addFilmbtn);
 
             }
@@ -111,8 +109,8 @@ function getAllFilms() {
 
 }
 
-function addFilm(ID, Film_ID) {
-    makeRequest("POST", path + `user/addFavFilm/${ID}/${Film_ID}`)
+function addFilm(ID, FilmID) {
+    makeRequest("POST", path + `user/addFavFilm/${ID}/${FilmID}`)
         .then((data) => {
             console.log(data);
         })
