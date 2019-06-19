@@ -25,9 +25,6 @@ public class User {
 	private String password;
 	@Column(length = 200)
 	private String email;
-	// @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch =
-	// FetchType.EAGER)
-	// private List<Film> film = new ArrayList<>();
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_film", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "film_id"))
 	private Set<Film> films = new HashSet<>();
