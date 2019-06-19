@@ -9,8 +9,7 @@ import org.junit.Test;
 public class UserTest {
 	@Test
 	public void userTest() {
-		User u = new User();
-		Set<Film> filmList = new HashSet<Film>();
+		Set<Film> filmList = new HashSet<>();
 		User u2 = new User(1, "user", "passw", "email", filmList);
 
 		u2.setId(2);
