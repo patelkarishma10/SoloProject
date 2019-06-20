@@ -5,6 +5,7 @@
     <title>account</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../view/index.css">
+    <link rel="stylesheet" type="text/css" href="../view/navbar.css">
 </head>
 
 <body onload="getAccountDetails()">
@@ -12,8 +13,16 @@
     <script src="../controller/account.js"></script>
     <script src="../controller/signout.js"></script>
     <script src="../controller/constants.js"></script>
-    <button id="homepage" class="btn btn-primary" onclick="window.location.href = 'homepage.html';">Home Page</button>
-    <button id="sign out" class="btn btn-primary" onclick="signOut()">Sign Out</button>
+
+    <ul>
+        <li><button id="homepage" class="active" onclick="window.location.href = 'homepage.html';">Home Page</button></li>
+        <li><button id="Account Details" onclick=" window.location.href = 'account.html';">Account Details</button></li>
+        <li>
+            <h1><img src="../resources/disneyLogo.png" alt="Disney Logo" height="50" width="85"></h1>
+        </li>
+        <li style="float:right"><button id="sign out" onclick="signOut()">Sign Out</button></li>
+    </ul>
+    <br><br>
     <input type="submit" class="btn btn-primary" value="delete an account" onclick="return deleteAccount()">
 
     <h2>Your Details</h2>
