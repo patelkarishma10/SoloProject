@@ -5,6 +5,7 @@
     <title>homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../view/index.css">
+    <link rel="stylesheet" type="text/css" href="../view/navbar.css">
 </head>
 
 <body>
@@ -12,12 +13,17 @@
     <script src="../controller/signout.js"></script>
     <script src="../controller/homepage.js"></script>
     <script src="../controller/constants.js"></script>
-    <h1>Disney Films</h1>
-    <button id="homepage" class="btn btn-primary" onclick="window.location.href = 'homepage.html';">Home Page</button>
-    <button id="Account Details" class="btn btn-primary" onclick=" window.location.href = 'account.html';">Account Details</button>
+    <ul>
+        <li><button id="homepage" class="active" onclick="window.location.href = 'homepage.html';">Home Page</button></li>
+        <li><button id="Account Details" onclick=" window.location.href = 'account.html';">Account Details</button></li>
+        <li>
+            <h1><img src="../resources/disneyLogo.png" alt="Disney Logo" height="50" width="85"></h1>
+        </li>
+        <li style="float:right"><button id="sign out" onclick="signOut()">Sign Out</button></li>
+    </ul>
+    <br><br>
     <button id="SeeAllFilms" class="btn btn-primary" onclick="return getAllFilms()">View All Films</button>
     <button id="FavouriteFilms" class="btn btn-primary" onclick="getUserFilms()">Your favourite Films</button>
-    <button id="sign out" class="btn btn-primary" onclick="signOut()">Sign Out</button>
     <br><br>
     <p id="AddFilmResponce"></p>
     <br><br>

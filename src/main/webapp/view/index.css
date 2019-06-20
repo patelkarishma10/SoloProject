@@ -1,11 +1,8 @@
-h1 {
-    text-align: center;
-    text-decoration: underline;
-}
-
+h1,
 h2 {
     text-align: center;
 }
+
 
 .formDiv {
     margin: auto;

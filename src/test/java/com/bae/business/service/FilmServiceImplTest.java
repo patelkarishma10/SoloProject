@@ -1,6 +1,5 @@
 package com.bae.business.service;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.junit.Assert;
@@ -25,14 +24,11 @@ public class FilmServiceImplTest {
 	private FilmDBRepository repo;
 
 	@Mock
-	private EntityManager manager;
-
-	@Mock
 	private Query query;
 
 	@Before
 	public void setUp() {
-		repo.setManager(manager);
+		// nothing to set up before tests
 	}
 
 	@Test
