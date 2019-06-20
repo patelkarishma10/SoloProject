@@ -61,4 +61,11 @@ public class UserControllerTest {
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.addFavouriteFilm(1, 2));
 
 	}
+
+	@Test
+	public void deleteFavouriteFilmTest() {
+		Mockito.when(service.deleteFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, controller.deleteFavouriteFilm(1, 2));
+
+	}
 }

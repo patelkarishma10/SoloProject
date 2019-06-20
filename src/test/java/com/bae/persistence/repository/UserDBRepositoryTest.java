@@ -58,13 +58,9 @@ public class UserDBRepositoryTest {
 
 	@Test
 	public void getAUserTest() {
-
 		Set<Film> newList = new HashSet<>();
-
 		User user = new User(1, "user", "password", "eamil", newList);
-
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
-
 		Assert.assertEquals(util.getJSONForObject(user), repo.getAUser(1));
 
 	}
@@ -90,11 +86,9 @@ public class UserDBRepositoryTest {
 	}
 
 	@Test
-	public void delleteFavouriteFilmTest() {
+	public void deleteFavouriteFilmTest() {
 		Set<Film> newList = new HashSet<>();
-
 		User user = new User(1, "user", "password", "eamil", newList);
-
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
 		String reply = repo.deleteFavouriteFilm(1, 1);
 		Assert.assertEquals("{\"message\": \"film has been sucessfully removed from favourite films\"}", reply);
