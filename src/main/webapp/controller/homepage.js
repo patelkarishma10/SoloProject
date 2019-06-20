@@ -112,6 +112,7 @@ function getAllFilms() {
 function addFilm(ID, FilmID) {
     makeRequest("POST", path + `user/addFavFilm/${ID}/${FilmID}`)
         .then((data) => {
+            getUserFilms();
             console.log(data);
         })
         .catch((error) => {
