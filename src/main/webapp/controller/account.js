@@ -17,7 +17,6 @@ function getAccountDetails() {
             document.getElementById("tableEmail").innerHTML = email;
             document.getElementById("tableUsername").innerHTML = username;
 
-            console.log(data);
         })
         .catch((error) => console.log(error.message));
     return false;
@@ -27,7 +26,6 @@ function deleteAccount() {
     let ID = sessionStorage.getItem('ID');
     makeRequest("DELETE", path + `user/deleteUser/${ID}`)
         .then((data) => {
-            console.log(data);
             sessionStorage.clear();
             window.location.href = 'index.html';
         })
@@ -44,7 +42,7 @@ function updateAccount() {
     };
     makeRequest("PUT", path + `user/updateUser/${id}`, updateAcc)
         .then((data) => {
-            console.log(data);
+            window.location.href = "account.html"
         }).catch((error) => console.log(error.message));
 
     return false;
