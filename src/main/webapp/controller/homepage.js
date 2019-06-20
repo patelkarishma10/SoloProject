@@ -5,7 +5,7 @@ function getUserFilms() {
         .then((data) => {
 
             const containerDiv = document.getElementById('favFilmsDiv');
-            let tableHeading = document.createElement('h1');
+            let tableHeading = document.createElement('h2');
             tableHeading.id = "tableHeading";
             tableHeading.innerHTML = "Your favourite films";
             containerDiv.appendChild(tableHeading);
@@ -38,13 +38,14 @@ function getUserFilms() {
                 removeFilmbtn.type = "button";
                 removeFilmbtn.className = "btn btn-primary";
                 removeFilmbtn.value = "Remove Film";
-                removeFilmbtn.onclick = function removeFilm() {
+                let FilmID = data.films[i].id;
 
+                removeFilmbtn.onclick = function () {
+                    removeFilm(ID, FilmID);
                 };
                 myRemoveFilm.appendChild(removeFilmbtn);
 
             }
-            console.log(data);
         })
         .catch((error) => console.log(error.message));
     return false;
@@ -59,7 +60,7 @@ function getAllFilms() {
         .then((data) => {
 
             const containerDiv2 = document.getElementById('AllFilmsDiv');
-            let tableHeading = document.createElement('h1');
+            let tableHeading = document.createElement('h2');
             tableHeading.id = "tableHeading2";
             tableHeading.innerHTML = "Disney films";
             containerDiv2.appendChild(tableHeading);
@@ -94,15 +95,13 @@ function getAllFilms() {
                 addFilmbtn.value = "Add Film";
                 let FilmID = data[i].id;
 
-                addFilmbtn.onclick = (function () {
-                    return function () {
-                        addFilm(ID, FilmID);
-                    }
-                })(data[i].id);
+                addFilmbtn.onclick = function () {
+                    addFilm(ID, FilmID);
+                }
+
                 myAddFilm.appendChild(addFilmbtn);
 
             }
-            console.log(data);
         })
         .catch((error) => console.log(error.message));
     return false;
@@ -113,11 +112,21 @@ function addFilm(ID, FilmID) {
     makeRequest("POST", path + `user/addFavFilm/${ID}/${FilmID}`)
         .then((data) => {
             getUserFilms();
-            console.log(data);
         })
         .catch((error) => {
             console.log(error.message)
-            document.getElementById("AddFilmResponce").value = "you have already added this film";
+        });
+    return false;
+}
+
+function removeFilm(ID, FilmID) {
+
+    makeRequest("DELETE", path + `user/deleteFavFilm/${ID}/${FilmID}`)
+        .then((data) => {
+            getUserFilms();
+        })
+        .catch((error) => {
+            console.log(error.message)
         });
     return false;
 }
