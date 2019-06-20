@@ -5,7 +5,7 @@ function getUserFilms() {
         .then((data) => {
 
             const containerDiv = document.getElementById('favFilmsDiv');
-            let tableHeading = document.createElement('h1');
+            let tableHeading = document.createElement('h2');
             tableHeading.id = "tableHeading";
             tableHeading.innerHTML = "Your favourite films";
             containerDiv.appendChild(tableHeading);
@@ -59,7 +59,7 @@ function getAllFilms() {
         .then((data) => {
 
             const containerDiv2 = document.getElementById('AllFilmsDiv');
-            let tableHeading = document.createElement('h1');
+            let tableHeading = document.createElement('h2');
             tableHeading.id = "tableHeading2";
             tableHeading.innerHTML = "Disney films";
             containerDiv2.appendChild(tableHeading);
