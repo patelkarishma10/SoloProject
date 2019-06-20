@@ -23,7 +23,7 @@ public class UserServiceImplTest {
 
 	@Before
 	public void setUp() {
-
+		// nothing to set up before tests
 	}
 
 	@Test
