@@ -46,7 +46,7 @@ public class UserDBRepositoryTest {
 	@Test
 	public void testCreateUserWithFilms() {
 		String reply = repo.createUser(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(reply, Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, reply);
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class UserDBRepositoryTest {
 		User user = new User(1, "kihj", "yd", "jhg", newList);
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.updateUserDetails(1, util.getJSONForObject(user));
-		Assert.assertEquals(reply, "{\"message\": \"account has been sucessfully updated\"}");
+		Assert.assertEquals("{\"message\": \"account has been sucessfully updated\"}", reply);
 	}
 
 	@Test
@@ -86,7 +86,7 @@ public class UserDBRepositoryTest {
 		List<User> users = new ArrayList<>();
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.addFavouriteFilm(1, 1);
-		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully added to favourite films\"}");
+		Assert.assertEquals("{\"message\": \"film has been sucessfully added to favourite films\"}", reply);
 	}
 
 	@Test
@@ -97,7 +97,7 @@ public class UserDBRepositoryTest {
 
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
 		String reply = repo.deleteFavouriteFilm(1, 1);
-		Assert.assertEquals(reply, "{\"message\": \"film has been sucessfully removed from favourite films\"}");
+		Assert.assertEquals("{\"message\": \"film has been sucessfully removed from favourite films\"}", reply);
 	}
 
 }
