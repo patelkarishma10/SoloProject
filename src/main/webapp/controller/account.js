@@ -22,6 +22,13 @@ function getAccountDetails() {
     return false;
 }
 
+function confirmDelete() {
+    let result = confirm("Are you sure you want to delete your account?");
+    if (result) {
+        deleteAccount();
+    }
+}
+
 function deleteAccount() {
     let ID = sessionStorage.getItem('ID');
     makeRequest("DELETE", path + `user/deleteUser/${ID}`)
