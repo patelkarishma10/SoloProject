@@ -52,19 +52,15 @@ public class UserDBRepositoryTest {
 	@Test
 	public void testDeleteUser() {
 		String reply = repo.deleteUser(1);
-		Assert.assertEquals("{\"message\": \"user has been sucessfully deleted\"}", reply);
+		Assert.assertEquals("{\"message\": \"user has been successfully deleted\"}", reply);
 
 	}
 
 	@Test
 	public void getAUserTest() {
-
 		Set<Film> newList = new HashSet<>();
-
 		User user = new User(1, "user", "password", "eamil", newList);
-
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
-
 		Assert.assertEquals(util.getJSONForObject(user), repo.getAUser(1));
 
 	}
@@ -77,7 +73,7 @@ public class UserDBRepositoryTest {
 		User user = new User(1, "kihj", "yd", "jhg", newList);
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.updateUserDetails(1, util.getJSONForObject(user));
-		Assert.assertEquals("{\"message\": \"account has been sucessfully updated\"}", reply);
+		Assert.assertEquals("{\"message\": \"account has been successfully updated\"}", reply);
 	}
 
 	@Test
@@ -86,18 +82,16 @@ public class UserDBRepositoryTest {
 		List<User> users = new ArrayList<>();
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.addFavouriteFilm(1, 1);
-		Assert.assertEquals("{\"message\": \"film has been sucessfully added to favourite films\"}", reply);
+		Assert.assertEquals("{\"message\": \"film has been successfully added to favourite films\"}", reply);
 	}
 
 	@Test
-	public void delleteFavouriteFilmTest() {
+	public void deleteFavouriteFilmTest() {
 		Set<Film> newList = new HashSet<>();
-
 		User user = new User(1, "user", "password", "eamil", newList);
-
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
 		String reply = repo.deleteFavouriteFilm(1, 1);
-		Assert.assertEquals("{\"message\": \"film has been sucessfully removed from favourite films\"}", reply);
+		Assert.assertEquals("{\"message\": \"film has been successfully removed from favourite films\"}", reply);
 	}
 
 }

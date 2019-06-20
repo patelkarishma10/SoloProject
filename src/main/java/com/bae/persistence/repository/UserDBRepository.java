@@ -46,7 +46,7 @@ public class UserDBRepository implements UserRepository {
 	public String deleteUser(int id) {
 		User userFound = em.find(User.class, id);
 		em.remove(userFound);
-		return "{\"message\": \"user has been sucessfully deleted\"}";
+		return "{\"message\": \"user has been successfully deleted\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -57,7 +57,7 @@ public class UserDBRepository implements UserRepository {
 				String.format("UPDATE User u SET u.username = '%s', u.password = '%s', u.email = '%s' WHERE u.id = %s",
 						userCreated.getUsername(), userCreated.getPassword(), userCreated.getEmail(), id));
 		q1.executeUpdate();
-		return "{\"message\": \"account has been sucessfully updated\"}";
+		return "{\"message\": \"account has been successfully updated\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -65,9 +65,9 @@ public class UserDBRepository implements UserRepository {
 	public String addFavouriteFilm(int userId, int filmId) {
 		Query q2 = em.createNativeQuery(
 				String.format("INSERT INTO User_Film(USER_id, FILM_id) VALUES (%s,%s)", userId, filmId));
-
 		q2.executeUpdate();
-		return "{\"message\": \"film has been sucessfully added to favourite films\"}";
+		return "{\"message\": \"film has been successfully added to favourite films\"}";
+
 	}
 
 	@Transactional(REQUIRED)
@@ -80,7 +80,7 @@ public class UserDBRepository implements UserRepository {
 				break;
 			}
 		}
-		return "{\"message\": \"film has been sucessfully removed from favourite films\"}";
+		return "{\"message\": \"film has been successfully removed from favourite films\"}";
 	}
 
 	public void setManager(EntityManager manager) {

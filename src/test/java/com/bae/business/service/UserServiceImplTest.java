@@ -29,7 +29,6 @@ public class UserServiceImplTest {
 	@Test
 	public void getAUserTest() {
 		Mockito.when(repo.getAUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
-
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.getAUser(1));
 
 	}
@@ -44,17 +43,14 @@ public class UserServiceImplTest {
 	@Test
 	public void deleteUserTest() {
 		Mockito.when(repo.deleteUser(1)).thenReturn(Constants.MOCK_USER_OBJECT);
-
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.deleteUser(1));
 
 	}
 
 	@Test
 	public void updateUserDetailsTest() {
-
 		String userString = Constants.MOCK_USER_OBJECT;
 		Mockito.when(repo.updateUserDetails(1, userString)).thenReturn(Constants.MOCK_USER_OBJECT);
-
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.updateUserDetails(1, userString));
 
 	}
@@ -63,6 +59,13 @@ public class UserServiceImplTest {
 	public void addFavouriteFilmTest() {
 		Mockito.when(repo.addFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
 		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.addFavouriteFilm(1, 2));
+
+	}
+
+	@Test
+	public void deleteFavouriteFilmTest() {
+		Mockito.when(repo.deleteFavouriteFilm(1, 2)).thenReturn(Constants.MOCK_USER_OBJECT);
+		Assert.assertEquals(Constants.MOCK_USER_OBJECT, service.deleteFavouriteFilm(1, 2));
 
 	}
 
