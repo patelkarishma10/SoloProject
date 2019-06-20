@@ -36,7 +36,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sh "sudo cp target/movieapp.war /home/matt_joe_hunt/scripts/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp /var/lib/jenkins/workspace/SoloProject/target/SoloProject.war /home/patelkarishma10/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
