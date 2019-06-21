@@ -11,5 +11,5 @@ public interface CharacterRepository {
 	// U
 
 	// D
-
+	String deleteCharacter(int id);
 }

@@ -9,4 +9,5 @@ public interface CharacterService {
 	// U
 
 	// D
+	String deleteCharacter(int id);
 }
