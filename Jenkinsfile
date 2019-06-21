@@ -22,6 +22,13 @@ pipeline{
                                 sh "mvn package"
                         }
                 }
+		stage('--deploy--'){
+                        steps{
+                                sh "cd /"
+				sh "pwd"
+				sh "sudo cp /var/lib/jenkins/workspace/${JOB_NAME}/target/SoloProject.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
+                        }
+                }
 		stage('--sonar--'){
                         steps{
                                 sh "mvn sonar:sonar"
@@ -36,13 +43,6 @@ pipeline{
                         steps{
                                 sh "mvn surefire-report:report"
 				sh "mvn site"
-                        }
-                }
-		stage('--deploy--'){
-                        steps{
-                                sh "cd /"
-				sh "pwd"
-				sh "sudo cp /var/lib/jenkins/workspace/${JOB_NAME}/target/SoloProject.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
 		
