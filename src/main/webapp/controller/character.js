@@ -71,7 +71,6 @@ function getAllCharacters() {
 }
 
 function updateCharacterForm() {
-    let CharId = sessionStorage.getItem('CharId');
     const containerDiv4 = document.getElementById('updateform');
     let tableHeading = document.createElement('h2');
     tableHeading.id = "tableHeading4";
