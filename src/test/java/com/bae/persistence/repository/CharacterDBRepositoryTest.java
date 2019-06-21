@@ -68,8 +68,18 @@ public class CharacterDBRepositoryTest {
 	}
 
 	@Test
-	public void testUpdateCharacter() {
+	public void testUpdateCharacterThatDoesNotExist() {
 		String reply = repo.updateCharacterDetails(1, Constants.MOCK_CHARACTER_OBJECT);
 		assertEquals("{\"message\": \"character has been successfully updated\"}", reply);
+	}
+
+	@Test
+	public void testUpdateCharacterThatDoesExist() {
+		Characters character = util.getObjectForJSON(Constants.MOCK_CHARACTER_OBJECT, Characters.class);
+		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(character);
+
+		assertEquals("{\"message\": \"character has been successfully updated\"}",
+				repo.updateCharacterDetails(1, Constants.MOCK_CHARACTER_OBJECT));
+
 	}
 }

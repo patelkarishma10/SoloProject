@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	public String getAUser(int id) {
 
 		if (repo.getAUser(id) == null) {
-			return "{\"message\": \"This is is not recognised\"}";
+			return "{\"message\": \"This id is not recognised\"}";
 		} else {
 			return repo.getAUser(id);
 		}

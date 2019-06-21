@@ -87,12 +87,24 @@ public class UserDBRepositoryTest {
 	}
 
 	@Test
-	public void deleteFavouriteFilmTest() {
+	public void deleteFavouriteFilmThatDoesNotExistTest() {
 		Set<Film> newList = new HashSet<>();
 		User user = new User(1, "user", "password", "eamil", newList);
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
 		String reply = repo.deleteFavouriteFilm(1, 1);
 		assertEquals("{\"message\": \"film has been successfully removed from favourite films\"}", reply);
+	}
+
+	@Test
+	public void deleteFavFilmThatDoesExistTest() {
+		Set<Film> newList = new HashSet<>();
+		Film film = util.getObjectForJSON(Constants.MOCK_FILM_OBJECT1, Film.class);
+		newList.add(film);
+		User user = new User(1, "user", "password", "eamil", newList);
+		Mockito.when(manager.find(Mockito.any(), Mockito.anyInt())).thenReturn(user);
+		assertEquals("{\"message\": \"film has been successfully removed from favourite films\"}",
+				repo.deleteFavouriteFilm(1, 1));
+
 	}
 
 }
