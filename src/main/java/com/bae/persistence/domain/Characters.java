@@ -11,7 +11,7 @@ public class Characters {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(length = 100)
+	@Column(length = 100, unique = true)
 	private String name;
 
 	public Characters(int id, String name) {
