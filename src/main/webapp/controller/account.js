@@ -49,7 +49,7 @@ function updateAccount() {
     };
     makeRequest("PUT", path + `user/updateUser/${id}`, updateAcc)
         .then((data) => {
-            window.location.href = "account.html"
+            getAccountDetails();
         }).catch((error) => console.log(error.message));
 
     return false;
