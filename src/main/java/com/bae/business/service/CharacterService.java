@@ -2,9 +2,10 @@ package com.bae.business.service;
 
 public interface CharacterService {
 	// C
-	String getAllCharacters();
-	// R
+	String createCharater(String characters);
 
+	// R
+	String getAllCharacters();
 	// U
 
 	// D

@@ -14,4 +14,9 @@ public class CharacterServiceImpl implements CharacterService {
 		return repo.getAllCharacters();
 	}
 
+	@Override
+	public String createCharater(String characters) {
+		return repo.createCharater(characters);
+	}
+
 }
