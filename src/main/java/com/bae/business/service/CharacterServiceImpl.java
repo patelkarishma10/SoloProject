@@ -24,4 +24,9 @@ public class CharacterServiceImpl implements CharacterService {
 		return repo.deleteCharacter(id);
 	}
 
+	@Override
+	public String updateCharacterDetails(int id, String character) {
+		return repo.updateCharacterDetails(id, character);
+	}
+
 }
