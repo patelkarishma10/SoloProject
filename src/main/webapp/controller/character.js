@@ -52,3 +52,16 @@ function getAllCharacters() {
     return false;
 
 }
+
+function createCharacter() {
+
+    let newChar = {
+        name: document.getElementById("charName").value,
+    };
+    makeRequest("POST", path + "character/createCharacter", newChar)
+        .then((data) => {
+            getAllCharacters();
+        })
+        .catch((error) => console.log(error.message));
+    return false;
+}

@@ -1,5 +1,6 @@
 package com.bae.persistence.repository;
 
+import static javax.transaction.Transactional.TxType.REQUIRED;
 import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
@@ -29,6 +30,14 @@ public class CharacterDBRepository implements CharacterRepository {
 		TypedQuery<Characters> query = em.createQuery("SELECT c FROM Characters c", Characters.class);
 		Collection<Characters> characters = query.getResultList();
 		return json.getJSONForObject(characters);
+	}
+
+	@Transactional(REQUIRED)
+	@Override
+	public String createCharater(String characters) {
+		Characters characterCreated = this.json.getObjectForJSON(characters, Characters.class);
+		em.persist(characterCreated);
+		return json.getJSONForObject(characterCreated);
 	}
 
 }

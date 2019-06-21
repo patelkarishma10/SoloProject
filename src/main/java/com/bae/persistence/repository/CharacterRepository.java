@@ -3,8 +3,10 @@ package com.bae.persistence.repository;
 public interface CharacterRepository {
 
 	// C
-	String getAllCharacters();
+	String createCharater(String characters);
+
 	// R
+	String getAllCharacters();
 
 	// U
 
