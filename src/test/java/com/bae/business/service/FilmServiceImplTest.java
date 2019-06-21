@@ -1,8 +1,9 @@
 package com.bae.business.service;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.Query;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bae.persistence.repository.FilmDBRepository;
+import com.bae.persistence.repository.FilmRepository;
 import com.bae.util.Constants;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -21,7 +22,7 @@ public class FilmServiceImplTest {
 	private FilmServiceImpl service;
 
 	@Mock
-	private FilmDBRepository repo;
+	private FilmRepository repo;
 
 	@Mock
 	private Query query;
@@ -34,7 +35,7 @@ public class FilmServiceImplTest {
 	@Test
 	public void getAllFilmsTest() {
 		Mockito.when(repo.getAllFilms()).thenReturn(Constants.MOCK_FILM_ARRAY);
-		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, service.getAllFilms());
+		assertEquals(Constants.MOCK_FILM_ARRAY, service.getAllFilms());
 
 	}
 

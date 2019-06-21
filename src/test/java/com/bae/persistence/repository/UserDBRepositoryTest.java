@@ -1,5 +1,7 @@
 package com.bae.persistence.repository;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +10,6 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,13 +47,13 @@ public class UserDBRepositoryTest {
 	@Test
 	public void testCreateUserWithFilms() {
 		String reply = repo.createUser(Constants.MOCK_USER_OBJECT);
-		Assert.assertEquals(Constants.MOCK_USER_OBJECT, reply);
+		assertEquals(Constants.MOCK_USER_OBJECT, reply);
 	}
 
 	@Test
 	public void testDeleteUser() {
 		String reply = repo.deleteUser(1);
-		Assert.assertEquals("{\"message\": \"user has been successfully deleted\"}", reply);
+		assertEquals("{\"message\": \"user has been successfully deleted\"}", reply);
 
 	}
 
@@ -61,7 +62,7 @@ public class UserDBRepositoryTest {
 		Set<Film> newList = new HashSet<>();
 		User user = new User(1, "user", "password", "eamil", newList);
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
-		Assert.assertEquals(util.getJSONForObject(user), repo.getAUser(1));
+		assertEquals(util.getJSONForObject(user), repo.getAUser(1));
 
 	}
 
@@ -73,7 +74,7 @@ public class UserDBRepositoryTest {
 		User user = new User(1, "kihj", "yd", "jhg", newList);
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.updateUserDetails(1, util.getJSONForObject(user));
-		Assert.assertEquals("{\"message\": \"account has been successfully updated\"}", reply);
+		assertEquals("{\"message\": \"account has been successfully updated\"}", reply);
 	}
 
 	@Test
@@ -82,7 +83,7 @@ public class UserDBRepositoryTest {
 		List<User> users = new ArrayList<>();
 		Mockito.when(query.getResultList()).thenReturn(users);
 		String reply = repo.addFavouriteFilm(1, 1);
-		Assert.assertEquals("{\"message\": \"film has been successfully added to favourite films\"}", reply);
+		assertEquals("{\"message\": \"film has been successfully added to favourite films\"}", reply);
 	}
 
 	@Test
@@ -91,7 +92,7 @@ public class UserDBRepositoryTest {
 		User user = new User(1, "user", "password", "eamil", newList);
 		Mockito.when(manager.find(User.class, 1)).thenReturn(user);
 		String reply = repo.deleteFavouriteFilm(1, 1);
-		Assert.assertEquals("{\"message\": \"film has been successfully removed from favourite films\"}", reply);
+		assertEquals("{\"message\": \"film has been successfully removed from favourite films\"}", reply);
 	}
 
 }

@@ -1,12 +1,13 @@
 package com.bae.persistence.repository;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,6 +47,6 @@ public class FilmDBRepositoryTest {
 		List<Object> films = new ArrayList<>();
 		films.add(new Film(1, "Test Film"));
 		Mockito.when(query.getResultList()).thenReturn(films);
-		Assert.assertEquals(Constants.MOCK_FILM_ARRAY, repo.getAllFilms());
+		assertEquals(Constants.MOCK_FILM_ARRAY, repo.getAllFilms());
 	}
 }

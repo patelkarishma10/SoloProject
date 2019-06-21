@@ -34,7 +34,7 @@ public class CharacterDBRepository implements CharacterRepository {
 
 	@Transactional(REQUIRED)
 	@Override
-	public String createCharater(String characters) {
+	public String createCharacter(String characters) {
 		Characters characterCreated = this.json.getObjectForJSON(characters, Characters.class);
 		em.persist(characterCreated);
 		return json.getJSONForObject(characterCreated);
@@ -58,6 +58,14 @@ public class CharacterDBRepository implements CharacterRepository {
 			em.persist(oldChar);
 		}
 		return "{\"message\": \"character has been successfully updated\"}";
+	}
+
+	public void setManager(EntityManager manager) {
+		this.em = manager;
+	}
+
+	public void setUtil(JSONUtil util) {
+		this.json = util;
 	}
 
 }

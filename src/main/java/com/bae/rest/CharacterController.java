@@ -28,7 +28,7 @@ public class CharacterController {
 	@POST
 	@Produces({ "application/json" })
 	public String createCharater(String characters) {
-		return service.createCharater(characters);
+		return service.createCharacter(characters);
 	}
 
 	@Path("/deleteCharacter/{id}")
@@ -43,5 +43,9 @@ public class CharacterController {
 	@Produces({ "application/json" })
 	public String updateCharacterDetails(@PathParam("id") int id, String character) {
 		return service.updateCharacterDetails(id, character);
+	}
+
+	public void setService(CharacterService service) {
+		this.service = service;
 	}
 }
