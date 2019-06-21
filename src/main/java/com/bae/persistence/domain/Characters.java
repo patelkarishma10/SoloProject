@@ -7,20 +7,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Character {
+public class Characters {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(length = 100)
 	private String name;
 
-	public Character(int id, String name) {
+	public Characters(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public Character() {
+	public Characters() {
 	}
 
 	public int getId() {
