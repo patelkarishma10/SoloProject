@@ -48,4 +48,16 @@ public class CharacterDBRepository implements CharacterRepository {
 		return "{\"message\": \"character has been successfully deleted\"}";
 	}
 
+	@Transactional(REQUIRED)
+	@Override
+	public String updateCharacterDetails(int id, String character) {
+		Characters updateChar = json.getObjectForJSON(character, Characters.class);
+		Characters oldChar = em.find(Characters.class, id);
+		if (oldChar != null) {
+			oldChar.setName(updateChar.getName());
+			em.persist(oldChar);
+		}
+		return "{\"message\": \"character has been successfully updated\"}";
+	}
+
 }
