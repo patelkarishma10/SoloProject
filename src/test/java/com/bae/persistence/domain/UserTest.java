@@ -1,9 +1,10 @@
 package com.bae.persistence.domain;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 public class UserTest {
@@ -17,10 +18,10 @@ public class UserTest {
 		u2.setEmail("TestEmail");
 		u2.setPassword("testPassword");
 
-		Assert.assertEquals(2, u2.getId());
-		Assert.assertEquals("testUsername", u2.getUsername());
-		Assert.assertEquals("TestEmail", u2.getEmail());
-		Assert.assertEquals("testPassword", u2.getPassword());
+		assertEquals(2, u2.getId());
+		assertEquals("testUsername", u2.getUsername());
+		assertEquals("TestEmail", u2.getEmail());
+		assertEquals("testPassword", u2.getPassword());
 
 	}
 

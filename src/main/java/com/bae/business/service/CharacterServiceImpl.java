@@ -15,11 +15,6 @@ public class CharacterServiceImpl implements CharacterService {
 	}
 
 	@Override
-	public String createCharater(String characters) {
-		return repo.createCharater(characters);
-	}
-
-	@Override
 	public String deleteCharacter(int id) {
 		return repo.deleteCharacter(id);
 	}
@@ -27,6 +22,12 @@ public class CharacterServiceImpl implements CharacterService {
 	@Override
 	public String updateCharacterDetails(int id, String character) {
 		return repo.updateCharacterDetails(id, character);
+	}
+
+	@Override
+	public String createCharacter(String characters) {
+		return repo.createCharacter(characters);
+
 	}
 
 }
