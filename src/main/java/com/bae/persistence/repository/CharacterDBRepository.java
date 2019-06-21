@@ -40,4 +40,12 @@ public class CharacterDBRepository implements CharacterRepository {
 		return json.getJSONForObject(characterCreated);
 	}
 
+	@Transactional(REQUIRED)
+	@Override
+	public String deleteCharacter(int id) {
+		Characters characterFound = em.find(Characters.class, id);
+		em.remove(characterFound);
+		return "{\"message\": \"character has been successfully deleted\"}";
+	}
+
 }

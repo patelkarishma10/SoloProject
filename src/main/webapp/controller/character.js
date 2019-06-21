@@ -38,12 +38,11 @@ function getAllCharacters() {
                 removeCharbtn.type = "button";
                 removeCharbtn.className = "btn btn-primary";
                 removeCharbtn.value = "Delete Character";
-                //let FilmID = data[i].id;
+                let CharacterID = data[i].id;
 
                 removeCharbtn.onclick = function () {
-
+                    removeCharacter(CharacterID);
                 }
-
                 myRemoveCharacter.appendChild(removeCharbtn);
 
             }
@@ -63,5 +62,17 @@ function createCharacter() {
             getAllCharacters();
         })
         .catch((error) => console.log(error.message));
+    return false;
+}
+
+function removeCharacter(CharacterID) {
+
+    makeRequest("DELETE", path + `character/deleteCharacter/${CharacterID}`)
+        .then((data) => {
+            getAllCharacters();
+        })
+        .catch((error) => {
+            console.log(error.message)
+        });
     return false;
 }
