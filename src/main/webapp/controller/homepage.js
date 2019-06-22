@@ -75,7 +75,7 @@ function getAllFilms() {
             tableHeadingTitle.innerHTML = "Tilte";
             container.appendChild(tableHeadingTitle);
             let tableHeadingRemoveFilm = document.createElement('th');
-            tableHeadingRemoveFilm.innerHTML = "Add a film";
+            tableHeadingRemoveFilm.innerHTML = "Add a film to your favourites";
             container.appendChild(tableHeadingRemoveFilm);
 
             for (let i = 0; i < data.length; i++) {
