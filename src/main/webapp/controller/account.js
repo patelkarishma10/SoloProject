@@ -7,7 +7,7 @@ function getAccountDetails() {
             const password = data.password;
             const ID = data.id;
 
-            document.getElementById("updateId").value = ID;
+            //document.getElementById("updateId").value = ID;
             document.getElementById("updateEmail").value = email;
             document.getElementById("updateUsername").value = username;
             document.getElementById("updatePassword").value = password;
@@ -41,7 +41,7 @@ function deleteAccount() {
 }
 
 function updateAccount() {
-    let id = Number(document.getElementById("updateId").value);
+    let id = sessionStorage.getItem('ID');
     let updateAcc = {
         username: document.getElementById("updateUsername").value,
         password: document.getElementById("updatePassword").value,
