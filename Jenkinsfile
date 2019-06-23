@@ -45,6 +45,15 @@ pipeline{
 				sh "mvn site"
                         }
                 }
+		stage('--email--'){
+                        
+			steps{
+                                
+				emailext attachLog: true, attachmentsPattern: 'target/site/jacoco/index.html, 				target/site/surefire-report.html', body: '', subject: '', to: 								'pkarishma044@gmail.com'
+                       
+			 }
+                
+		}
 		
         }
 }
